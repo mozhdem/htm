@@ -1,0 +1,128 @@
+.menu-wrap{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 1;
+}
+
+.menu-wrap .toggler{
+    position: absolute;
+    top:0;
+    left:0;
+    height:50px;
+    width:50px;
+    z-index:2;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.menu-wrap .hamburger{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    background-color:rgba(70, 130, 180, 0.6)
+}
+
+.menu-wrap .hamburger > div{
+    flex:none;
+    position: relative;
+    height:3px;
+    width:45px;
+    background-color: rgba(244,244,244);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.menu-wrap .hamburger > div::before{
+    position: absolute;
+    z-index:1;
+    top:-15px;
+    height:3px;
+    content:"";
+    width:45px;
+    background-color: rgba(244,244,244);
+}
+
+.menu-wrap .hamburger > div::after{
+    position: absolute;
+    z-index:1;
+    top:15px;
+    height:3px;
+    content:"";
+    width:45px;
+    background-color: rgba(244,244,244);
+}
+
+.menu-wrap .toggler:checked +.hamburger >div {
+    transform: rotate(135deg);
+}
+
+.menu-wrap .toggler:checked +.hamburger >div:after,
+.menu-wrap .toggler:checked +.hamburger >div:before{
+    top:0; 
+    transform: rotate(90deg);
+}
+
+
+.menu-wrap .toggler:checked:hover +.hamburger >div{
+    transform: rotate(225deg)
+}
+
+.menu-wrap .menu {
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    /* overflow: hidden; */
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    visibility: hidden;
+}
+
+.menu-wrap .menu >div{
+    background-color:rgba(51, 51, 51 ,0.6);
+    height:200vw;
+    width:200vw;
+    border-radius:50%;
+    display: flex;
+    /* flex: none; اینو نمیذاشتی بیضی میشد چون  فلکس روی اندازه ها اثر میذاره */
+    flex: none;
+    align-items: center;
+    justify-content:center;
+    transform:scale(0);
+    transition:all 0.4s ease;
+}
+.menu-wrap .menu div ul li{
+    list-style: none;
+    margin:1.5rem;
+    font-size: 2rem;
+}
+
+.menu-wrap .menu div ul li a{
+    text-decoration: none;
+    color:#fff;
+    transition: color 0.4s ease;
+}
+
+.menu-wrap .menu div ul li a:hover{
+    color:rgb(195, 43, 4);
+}
+
+.menu-wrap .toggler:checked ~ .menu{
+    visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu>div{
+    transform: scale(1);
+}
